@@ -1,98 +1,64 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
-
+import { BannerCard } from "@/components/portfolio/BannerCard";
+import { FeaturedProjectCard } from "@/components/portfolio/FeaturedProjectCard";
+import { Header } from "@/components/portfolio/Header";
+import { HeroPreviewCard } from "@/components/portfolio/HeroPreviewCard";
+import { SocialAccountCard } from "@/components/portfolio/SocialAccountCard";
+import { mockProjects, mockSocialAccounts } from "@/mock/portifolio";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function HomeScreen() {
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+    <SafeAreaView className="flex-1 bg-slate-100">
+      <ScrollView
+        className="flex-1 px-4"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 32 }}
+      >
+        <Header />
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+        <BannerCard status="ATIVO" url="devfolio.io/lucassilva" />
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+        <HeroPreviewCard />
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+        {/* Seção Projetos em Destaque */}
+        <View className="flex-row justify-between items-center mb-3">
+          <View className="flex-row items-center space-x-2">
+            <Text className="font-bold text-gray-900 text-sm">
+              Projetos em Destaque
+            </Text>
+            <View className="bg-gray-800 px-2 py-0.5 rounded-md">
+              <Text className="text-white text-[11px] font-semibold">
+                {mockProjects.length} ativos
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity>
+            <Text className="text-orange-500 font-semibold text-xs">
+              + Adicionar Destaque
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {mockProjects.map((project) => (
+          <FeaturedProjectCard key={project.id} project={project} />
+        ))}
+
+        {/* Seção Redes Conectadas */}
+        <View className="flex-row justify-between items-center mt-4 mb-3">
+          <Text className="font-bold text-gray-900 text-sm">
+            Redes Conectadas
+          </Text>
+          <TouchableOpacity>
+            <Text className="text-orange-500 font-semibold text-xs">
+              + Conectar nova
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {mockSocialAccounts.map((account) => (
+          <SocialAccountCard key={account.id} item={account} />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
