@@ -1,63 +1,62 @@
 import { BannerCard } from "@/components/portfolio/BannerCard";
-import { FeaturedProjectCard } from "@/components/portfolio/FeaturedProjectCard";
 import { Header } from "@/components/portfolio/Header";
-import { HeroPreviewCard } from "@/components/portfolio/HeroPreviewCard";
 import { SocialAccountCard } from "@/components/portfolio/SocialAccountCard";
-import { mockProjects, mockSocialAccounts } from "@/mock/portifolio";
+import { StatCards } from "@/components/portfolio/StatCards";
+import { VisitorCountriesCard } from "@/components/portfolio/VisitorCountriesCard";
+import { mockSocialAccounts, mockVisitorCountries } from "@/mock/portifolio";
+import { Feather } from "@expo/vector-icons";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 export default function HomeScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-slate-100">
+    <SafeAreaView className="flex-1 bg-slate-50">
       <ScrollView
-        className="flex-1 px-4"
+        className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 32 }}
+        contentContainerStyle={{ paddingBottom: 40 }}
       >
+        {/* Header */}
         <Header />
 
-        <BannerCard status="ATIVO" url="devfolio.io/lucassilva" />
-
-        <HeroPreviewCard />
-
-        {/* Seção Projetos em Destaque */}
+        {/* Top Breadcrumb / Category Row */}
         <View className="flex-row justify-between items-center mb-3">
-          <View className="flex-row items-center space-x-2">
-            <Text className="font-bold text-gray-900 text-sm">
-              Projetos em Destaque
-            </Text>
-            <View className="bg-gray-800 px-2 py-0.5 rounded-md">
-              <Text className="text-white text-[11px] font-semibold">
-                {mockProjects.length} ativos
-              </Text>
-            </View>
-          </View>
+          <Text className="text-xs font-semibold tracking-wider uppercase">
+            <Text className="text-gray-800">CMS, </Text>
+            <Text className="text-orange-500">PORTIFOLIO</Text>
+          </Text>
           <TouchableOpacity>
-            <Text className="text-orange-500 font-semibold text-xs">
-              + Adicionar Destaque
-            </Text>
+            <Feather name="external-link" size={16} color="#EA580C" />
           </TouchableOpacity>
         </View>
 
-        {mockProjects.map((project) => (
-          <FeaturedProjectCard key={project.id} project={project} />
-        ))}
+        {/* Hero Banner Card */}
+        <BannerCard url="devfolio.io/lucassilva" />
 
-        {/* Seção Redes Conectadas */}
-        <View className="flex-row justify-between items-center mt-4 mb-3">
-          <Text className="font-bold text-gray-900 text-sm">
+        {/* Action Stats Row */}
+        <StatCards />
+
+        {/* Visitor Countries Section */}
+        <VisitorCountriesCard countries={mockVisitorCountries} />
+
+        {/* Connected Social Accounts Header */}
+        <View className="flex-row justify-between items-center mt-2 mb-3">
+          <Text className="font-bold text-gray-900 text-base">
             Redes Conectadas
           </Text>
           <TouchableOpacity>
-            <Text className="text-orange-500 font-semibold text-xs">
+            <Text className="text-orange-500 font-medium text-xs">
               + Conectar nova
             </Text>
           </TouchableOpacity>
         </View>
 
-        {mockSocialAccounts.map((account) => (
-          <SocialAccountCard key={account.id} item={account} />
-        ))}
+        {/* Connected Social Accounts White Card */}
+        <View className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3">
+          {mockSocialAccounts.map((account) => (
+            <SocialAccountCard key={account.id} item={account} />
+          ))}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

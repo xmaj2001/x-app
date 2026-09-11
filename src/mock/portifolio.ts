@@ -15,6 +15,15 @@ export interface SocialAccount {
   enabled: boolean;
 }
 
+export interface VisitorCountry {
+  id: string;
+  code: string;
+  country: string;
+  cities: string;
+  count: string;
+  percentage: string;
+}
+
 export const mockProjects: Project[] = [
   {
     id: "1",
@@ -52,8 +61,43 @@ export const mockSocialAccounts: SocialAccount[] = [
   {
     id: "3",
     name: "X (Twitter)",
-    handle: "@Lucas_dev",
+    handle: "@lucas_dev",
     iconName: "at-sign",
     enabled: false,
+  },
+];
+
+export const mockVisitorCountries: VisitorCountry[] = [
+  {
+    id: "1",
+    code: "U S",
+    country: "Estados Unidos",
+    cities: "São Francisco, Nova Iorque",
+    count: "5.820",
+    percentage: "41%",
+  },
+  {
+    id: "2",
+    code: "P T",
+    country: "Portugal",
+    cities: "Lisboa, Porto",
+    count: "3.410",
+    percentage: "24%",
+  },
+  {
+    id: "3",
+    code: "B R",
+    country: "Brasil",
+    cities: "São Paulo, Rio de Janeiro",
+    count: "2.840",
+    percentage: "20%",
+  },
+  {
+    id: "4",
+    code: "G B",
+    country: "Reino Unido",
+    cities: "Londres, Bristol",
+    count: "2.210",
+    percentage: "15%",
   },
 ];

@@ -7,6 +7,10 @@
     "icon": "./assets/images/icon.png",
     "scheme": "xapp",
     "userInterfaceStyle": "automatic",
+    "updates": {
+      "url": "https://updates.expo.dev/60e75e07-d568-40b1-9e3e-de246d55a205",
+      "fallbackToCacheTimeout": 30000
+    },
     "ios": {
       "icon": "./assets/expo.icon"
     },
@@ -17,7 +21,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.xmaj.xapp"
     },
     "web": {
       "output": "static",

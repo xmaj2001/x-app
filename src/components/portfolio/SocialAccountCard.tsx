@@ -9,14 +9,14 @@ export const SocialAccountCard: React.FC<{ item: SocialAccount }> = ({
   const [isEnabled, setIsEnabled] = useState(item.enabled);
 
   return (
-    <View className="bg-white rounded-xl p-3.5 mb-2.5 flex-row items-center justify-between border border-gray-100 shadow-sm">
+    <View className="flex-row items-center justify-between py-2">
       <View className="flex-row items-center space-x-3">
-        <View className="w-10 h-10 bg-slate-100 rounded-xl justify-center items-center">
-          <Feather name={item.iconName as any} size={18} color="#EA580C" />
+        <View className="w-11 h-11 bg-blue-50 rounded-xl justify-center items-center">
+          <Feather name={item.iconName as any} size={20} color="#1F2937" />
         </View>
         <View>
           <Text className="font-bold text-gray-900 text-sm">{item.name}</Text>
-          <Text className="text-gray-400 text-xs">{item.handle}</Text>
+          <Text className="text-gray-400 text-xs font-mono">{item.handle}</Text>
         </View>
       </View>
 
@@ -27,7 +27,7 @@ export const SocialAccountCard: React.FC<{ item: SocialAccount }> = ({
         <Switch
           value={isEnabled}
           onValueChange={setIsEnabled}
-          trackColor={{ false: "#D1D5DB", true: "#F97316" }}
+          trackColor={{ false: "#374151", true: "#F97316" }}
           thumbColor="#FFFFFF"
         />
       </View>
