@@ -1,13 +1,10 @@
 {
-  "fill" : {
-    "automatic-gradient" : "extended-srgb:0.00000,0.47843,1.00000,1.00000"
-  },
   "groups" : [
     {
       "layers" : [
         {
-          "image-name" : "expo-symbol 2.svg",
-          "name" : "expo-symbol 2",
+          "image-name" : "x.svg",
+          "name" : "logo",
           "position" : {
             "scale" : 1,
             "translation-in-points" : [

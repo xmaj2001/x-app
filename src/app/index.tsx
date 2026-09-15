@@ -22,7 +22,7 @@ export default function HomeScreen() {
         {/* Top Breadcrumb / Category Row */}
         <View className="flex-row justify-between items-center mb-3">
           <Text className="text-xs font-semibold tracking-wider uppercase">
-            <Text className="text-gray-800">CMS X, </Text>
+            <Text className="text-gray-800">CMS, </Text>
             <Text className="text-orange-500">PORTIFOLIO</Text>
           </Text>
           <TouchableOpacity>
