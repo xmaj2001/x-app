@@ -19,11 +19,11 @@ export default function UpdatesDemo() {
 
   // Show whether or not we are running embedded code or an update
   const runTypeMessage = currentlyRunning.isEmbeddedLaunch
-    ? "This app is running from built-in code"
-    : "This app is running an update";
+    ? "Este app está rodando do código embutido"
+    : "Este app está rodando uma atualização";
 
   return (
-    <View className="flex-1">
+    <View className="flex-1 bg-orange-400">
       <Text className="text-xl font-bold mb-2">Updates Demo</Text>
       <Text>{runTypeMessage}</Text>
       <Button

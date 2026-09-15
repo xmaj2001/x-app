@@ -7,10 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "xapp",
     "userInterfaceStyle": "automatic",
-    "updates": {
-      "url": "https://updates.expo.dev/60e75e07-d568-40b1-9e3e-de246d55a205",
-      "fallbackToCacheTimeout": 30000
-    },
     "ios": {
       "icon": "./assets/expo.icon"
     },
@@ -21,8 +17,7 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false,
-      "package": "com.xmaj.xapp"
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "output": "static",
@@ -38,9 +33,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ],
-      "expo-image",
-      "expo-web-browser"
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
@@ -49,9 +42,15 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "60e75e07-d568-40b1-9e3e-de246d55a205"
+        "projectId": "8e0c8c71-553d-475c-b538-1d7a58ee865b"
       }
     },
-    "owner": "xmaj"
+    "owner": "xmaj",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/8e0c8c71-553d-475c-b538-1d7a58ee865b"
+    }
   }
 }
